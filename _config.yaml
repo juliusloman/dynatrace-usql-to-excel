@@ -1,0 +1,18 @@
+environment:
+  url: "https://path/to/dynatrace/environment"
+  apiToken: ""
+  certVerify: "false"
+
+workbook: "export.xlsx"
+
+loglevel: "INFO"
+
+usqls:
+  - name: "Sheet name"
+    query: |
+      SELECT 
+        top(userid,1000) as 'User id', count(*) as 'Počet sessions'
+      FROM usersession 
+      GROUP BY userid
+    pageSize: 5000
+    startTimestamp: 1682899200000
